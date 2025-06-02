@@ -29,6 +29,110 @@
       </FileCreate>
     </RuleGroup>
 
+
+    <RuleGroup name="Memory Tampering" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <CallTrace condition="contains">NtWriteVirtualMemory</CallTrace>
+        <CallTrace condition="contains">VirtualProtect</CallTrace>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <TargetImage condition="end with">HD-Player.exe</TargetImage>
+        <GrantedAccess condition="is">0x40</GrantedAccess>  
+        <GrantedAccess condition="is">0x20</GrantedAccess> 
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <TargetImage condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains">NtProtectVirtualMemory</CallTrace>
+      </ProcessAccess>
+    </RuleGroup>
+
+
+
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">ReadProcessMemory</CallTrace>
+    </ProcessAccess>
+
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">NtOpenProcess</CallTrace>
+      <SourceImage condition="end with">.exe</SourceImage>
+    </ProcessAccess>
+
+
+    <ProcessAccess onmatch="include">
+      <TargetImage condition="contains">ntdll.dll</TargetImage>
+      <CallTrace condition="contains">EtwEventWrite</CallTrace>
+    </ProcessAccess>
+
+
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">NtCreateSection</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">NtCreateSection</CallTrace>
+      <TargetImage condition="end with">Bluestacks.exe</TargetImage>
+    </ProcessAccess>
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">NtMapViewOfSection</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">NtMapViewOfSection</CallTrace>
+      <TargetImage condition="end with">Bluestacks.exe</TargetImage>
+    </ProcessAccess>
+
+
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">SetThreadContext</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">SetThreadContext</CallTrace>
+      <TargetImage condition="end with">Bluestacks.exe</TargetImage>
+    </ProcessAccess>
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">QueueUserAPC</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">QueueUserAPC</CallTrace>
+      <TargetImage condition="end with">Bluestacks.exe</TargetImage>
+    </ProcessAccess>
+
+    <ProcessTampering onmatch="include">
+      <Image condition="contains">RWX</Image>
+      <Type condition="is">ImageTampering</Type>
+    </ProcessTampering>
+
+
+    <ProcessTampering onmatch="include">
+      <Image condition="contains">ntdll.dll</Image>
+      <Type condition="is">RemoteImageHijack</Type>
+    </ProcessTampering>
+
+    <FileDelete onmatch="include">
+      <TargetFilename condition="contains">.evtx</TargetFilename>
+    </FileDelete>
+
+
+    <FileCreate onmatch="include">
+      <TargetFilename condition="contains">.evtx</TargetFilename>
+    </FileCreate>
+
+
+
+    <RegistryEvent onmatch="include">
+      <TargetObject condition="contains">EventLog</TargetObject>
+    </RegistryEvent>
+
+
+
     <RuleGroup name="" groupRelation="or">
       <ProcessCreate onmatch="include">
         <OriginalFileName name="technique_id=T1546.008,technique_name=Windows Error Reporting" condition="contains">werfault.exe</OriginalFileName>
