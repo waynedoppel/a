@@ -105,6 +105,340 @@
       <TargetImage condition="end with">Bluestacks.exe</TargetImage>
     </ProcessAccess>
 
+   
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">NtCreateThreadEx</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">NtQueueApcThread</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">NtAllocateVirtualMemory</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">NtWriteVirtualMemory</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">NtResumeThread</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">NtSuspendThread</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    
+   
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">syscall</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">ntdll.dll</CallTrace>
+      <CallTrace condition="contains">syscall</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    
+   
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">LdrLoadDll</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">NtCreateFile</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    
+   
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">wow64cpu.dll</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">X64Call</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    
+
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">NtUnmapViewOfSection</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    
+   
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">SetWindowsHookEx</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+    </ProcessAccess>
+    
+
+    <ProcessAccess onmatch="include">
+      <CallTrace condition="contains">VirtualAllocEx</CallTrace>
+      <TargetImage condition="end with">HD-Player.exe</TargetImage>
+      <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+    </ProcessAccess>
+    
+    <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">WriteProcessMemory</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">NtUserCallOneParam</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">NtUserCallTwoParam</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">KiSystemCall64</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">KiFastSystemCall</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">KeServiceDescriptorTable</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+     </ProcessAccess>
+
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">NtProtectVirtualMemory</CallTrace>
+       <CallTrace condition="contains">PAGE_EXECUTE_READWRITE</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">LdrGetProcedureAddress</CallTrace>
+       <CallTrace condition="contains">ntdll.dll</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains all">kernel32.dll;VirtualProtect</CallTrace>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains all">kernel32.dll;WriteProcessMemory</CallTrace>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">DeviceIoControl</CallTrace>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">NtDeviceIoControlFile</CallTrace>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">ZwDeviceIoControlFile</CallTrace>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <TargetImage name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="end with">Sysmon.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <TargetImage name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="end with">Sysmon64.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">NtQuerySystemInformation</CallTrace>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">NtQueryInformationProcess</CallTrace>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">NtReadVirtualMemory</CallTrace>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">NtWriteVirtualMemory</CallTrace>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">NtReadFile</CallTrace>
+       <CallTrace condition="contains">.dll</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">VirtualAlloc</CallTrace>
+       <CallTrace condition="contains">CreateThread</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">GetThreadContext</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">CreateRemoteThread</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">NtCreateThreadEx</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">NtAllocateVirtualMemory</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">ZwAllocateVirtualMemory</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">ZwWriteVirtualMemory</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">NtMapViewOfSection</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">ZwMapViewOfSection</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">LdrLoadDll</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">LdrGetDllHandle</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">NtUnmapViewOfSection</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">ZwUnmapViewOfSection</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">SetThreadContext</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">NtSetContextThread</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">VirtualProtectEx</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">NtProtectVirtualMemory</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">NtSystemDebugControl</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">NtSetInformationThread</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+       <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <CallTrace condition="contains">VirtualProtect</CallTrace>
+       <CallTrace condition="contains">PAGE_EXECUTE_READ</CallTrace>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+     </ProcessAccess>
+     
+
+     <ProcessAccess onmatch="include">
+       <GrantedAccess condition="is">0x001F0FFF</GrantedAccess>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+     </ProcessAccess>
+     
+     <ProcessAccess onmatch="include">
+       <GrantedAccess condition="is">0x1FFFFF</GrantedAccess>
+       <TargetImage condition="end with">HD-Player.exe</TargetImage>
+     </ProcessAccess>
+
     <ProcessTampering onmatch="include">
       <Image condition="contains">RWX</Image>
       <Type condition="is">ImageTampering</Type>
@@ -118,11 +452,74 @@
 
     <FileDelete onmatch="include">
       <TargetFilename condition="contains">.evtx</TargetFilename>
+      
+
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\system32\version.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\system32\dwmapi.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\system32\uxtheme.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\system32\winmm.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\system32\wtsapi32.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\system32\wininet.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\system32\msvcr100.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\system32\msvcr110.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\system32\msvcr120.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\system32\msvcp100.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\system32\msvcp110.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\system32\msvcp120.dll</TargetFilename>
+      
+
+      <TargetFilename name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">.dll;\AppData\</TargetFilename>
+      <TargetFilename name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">.dll;\ProgramData\</TargetFilename>
+      <TargetFilename name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">.dll;\Temp\</TargetFilename>
+      <TargetFilename name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">.dll;\Public\</TargetFilename>
+      <TargetFilename name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">.dll;\Downloads\</TargetFilename>
+      <TargetFilename name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">.dll;\Documents\</TargetFilename>
+      
+
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\amsi.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\dbghelp.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\dbgcore.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\ntdll.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\kernel32.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\kernelbase.dll</TargetFilename>
+      
+
+      <TargetFilename name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">.dll;\Windows\System32\</TargetFilename>
+      <TargetFilename name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">.dll;\Windows\SysWOW64\</TargetFilename>
     </FileDelete>
 
 
     <FileCreate onmatch="include">
       <TargetFilename condition="contains">.evtx</TargetFilename>
+      
+
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="contains all">.dll;\AppData\</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="contains all">.dll;\ProgramData\</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="contains all">.dll;\Temp\</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="contains all">.dll;\Public\</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="contains all">.dll;\Downloads\</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="contains all">.dll;\Documents\</TargetFilename>
+      
+
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\version.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\dwmapi.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\uxtheme.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\winmm.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\wtsapi32.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\wininet.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\amsi.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\dbghelp.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\dbgcore.dll</TargetFilename>
+
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\msvcr100.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\msvcr110.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\msvcr120.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\msvcp100.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\msvcp110.dll</TargetFilename>
+      <TargetFilename name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\msvcp120.dll</TargetFilename>
+
+      <TargetFilename name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">.dll;\Windows\System32\</TargetFilename>
+      <TargetFilename name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">.dll;\Windows\SysWOW64\</TargetFilename>
     </FileCreate>
 
 
@@ -484,6 +881,41 @@
           <CommandLine condition="contains any">-DisableRealTimeMonitoring $true;-DisableBehaviorMonitoring $true;-DisableBlockAtFirstSeen $true;-DisableIOAVProtection $true;-DisablePrivacyMode $true;-SignatureDisableUpdateOnStartupWithoutEngine $true;-DisableArchiveScanning $true;-DisableIntrusionPreventionSystem $true;-DisableScriptScanning $true</CommandLine>
         </Rule>
         <CommandLine name="technique_id=T1027,technique_name=Obfuscated Files or Information" condition="contains">^</CommandLine>
+        
+
+        <CommandLine name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">SetWindowsHookEx</CommandLine>
+        <CommandLine name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">VirtualProtect</CommandLine>
+        <CommandLine name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">WriteProcessMemory</CommandLine>
+        <CommandLine name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">CreateRemoteThread</CommandLine>
+        <CommandLine name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">NtWriteVirtualMemory</CommandLine>
+        <CommandLine name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">ZwWriteVirtualMemory</CommandLine>
+        
+
+        <CommandLine name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">DeviceIoControl</CommandLine>
+        <CommandLine name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">NtDeviceIoControlFile</CommandLine>
+        <CommandLine name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">ZwDeviceIoControlFile</CommandLine>
+        
+
+        <CommandLine name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains all">sc;stop;sysmon</CommandLine>
+        <CommandLine name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains all">sc;delete;sysmon</CommandLine>
+        <CommandLine name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains all">net;stop;sysmon</CommandLine>
+        <CommandLine name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains all">taskkill;sysmon</CommandLine>
+        <CommandLine name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains all">wevtutil;cl;Microsoft-Windows-Sysmon</CommandLine>
+        <CommandLine name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains all">reg;delete;sysmon</CommandLine>
+        
+
+        <CommandLine name="technique_id=T1055.001,technique_name=API Hooking" condition="contains all">ntdll;LdrGetProcedureAddress</CommandLine>
+        <CommandLine name="technique_id=T1055.001,technique_name=API Hooking" condition="contains all">ntdll;NtProtectVirtualMemory</CommandLine>
+        <CommandLine name="technique_id=T1055.001,technique_name=API Hooking" condition="contains all">kernel32;GetProcAddress</CommandLine>
+        
+
+        <CommandLine name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">LoadLibrary</CommandLine>
+        <CommandLine name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">LdrLoadDll</CommandLine>
+        <CommandLine name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">GetModuleHandle</CommandLine>
+
+        <CommandLine name="technique_id=T1014,technique_name=Rootkit" condition="contains">KeServiceDescriptorTable</CommandLine>
+        <CommandLine name="technique_id=T1014,technique_name=Rootkit" condition="contains">KiSystemCall64</CommandLine>
+        <CommandLine name="technique_id=T1014,technique_name=Rootkit" condition="contains">KiFastSystemCall</CommandLine>
         <CommandLine name="technique_id=T1027,technique_name=Obfuscated Files or Information" condition="contains">../../</CommandLine>
         <ParentCommandLine name="technique_id=T1204,technique_name=User Execution" condition="is">C:\Windows\explorer.exe</ParentCommandLine>
         <ParentImage name="technique_id=T1204,technique_name=User Execution" condition="is">C:\Windows\explorer.exe</ParentImage>
@@ -866,6 +1298,225 @@
           <OriginalFileName name="technique_id=T1490,technique_name=Inhibit System Recovery" condition="is">bcdedit.exe</OriginalFileName>
           <CommandLine name="technique_id=T1490,technique_name=Inhibit System Recovery" condition="contains all">bootstatuspolicy;ignoreallfailures</CommandLine>
         </Rule>
+
+        <Rule name="Type Bypass - OriginalFileName Mismatch" groupRelation="and">
+          <OriginalFileName name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is">svchost.exe</OriginalFileName>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="not begin with">C:\Windows\System32\svchost.exe</Image>
+        </Rule>
+        <Rule name="Type Bypass - OriginalFileName Mismatch" groupRelation="and">
+          <OriginalFileName name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is">explorer.exe</OriginalFileName>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is not">C:\Windows\explorer.exe</Image>
+        </Rule>
+        <Rule name="Type Bypass - OriginalFileName Mismatch" groupRelation="and">
+          <OriginalFileName name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is">winlogon.exe</OriginalFileName>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is not">C:\Windows\System32\winlogon.exe</Image>
+        </Rule>
+        <Rule name="Type Bypass - OriginalFileName Mismatch" groupRelation="and">
+          <OriginalFileName name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is">lsass.exe</OriginalFileName>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is not">C:\Windows\System32\lsass.exe</Image>
+        </Rule>
+        <Rule name="Type Bypass - OriginalFileName Mismatch" groupRelation="and">
+          <OriginalFileName name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is">csrss.exe</OriginalFileName>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is not">C:\Windows\System32\csrss.exe</Image>
+        </Rule>
+        <Rule name="Type Bypass - OriginalFileName Mismatch" groupRelation="and">
+          <OriginalFileName name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is">wininit.exe</OriginalFileName>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is not">C:\Windows\System32\wininit.exe</Image>
+        </Rule>
+        
+
+        <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is any">svch0st.exe;svchost32.exe;svchost64.exe;svchosts.exe</Image>
+        <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is any">lsas.exe;lsass32.exe;lsasss.exe;1sass.exe</Image>
+        <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is any">csrss32.exe;csrs.exe;cssrss.exe;crss.exe</Image>
+        <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is any">winl0gon.exe;winlogon32.exe;winlog0n.exe</Image>
+        <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is any">exp1orer.exe;explorer32.exe;explor3r.exe;iexplorer.exe</Image>
+        <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is any">taskmgr32.exe;taskmanager.exe;taskmanger.exe</Image>
+        <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is any">notepad32.exe;notepadd.exe;n0tepad.exe</Image>
+        <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is any">chrome32.exe;chromee.exe;chr0me.exe;googlechrome.exe</Image>
+        <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is any">firefox32.exe;firefoxx.exe;firef0x.exe;mozillafirefox.exe</Image>
+        
+
+        <Rule name="Type Bypass - Double Extension" groupRelation="or">
+          <Image name="technique_id=T1036.007,technique_name=Double File Extension" condition="end with">.pdf.exe</Image>
+          <Image name="technique_id=T1036.007,technique_name=Double File Extension" condition="end with">.doc.exe</Image>
+          <Image name="technique_id=T1036.007,technique_name=Double File Extension" condition="end with">.docx.exe</Image>
+          <Image name="technique_id=T1036.007,technique_name=Double File Extension" condition="end with">.xls.exe</Image>
+          <Image name="technique_id=T1036.007,technique_name=Double File Extension" condition="end with">.xlsx.exe</Image>
+          <Image name="technique_id=T1036.007,technique_name=Double File Extension" condition="end with">.ppt.exe</Image>
+          <Image name="technique_id=T1036.007,technique_name=Double File Extension" condition="end with">.pptx.exe</Image>
+          <Image name="technique_id=T1036.007,technique_name=Double File Extension" condition="end with">.txt.exe</Image>
+          <Image name="technique_id=T1036.007,technique_name=Double File Extension" condition="end with">.jpg.exe</Image>
+          <Image name="technique_id=T1036.007,technique_name=Double File Extension" condition="end with">.png.exe</Image>
+          <Image name="technique_id=T1036.007,technique_name=Double File Extension" condition="end with">.mp3.exe</Image>
+          <Image name="technique_id=T1036.007,technique_name=Double File Extension" condition="end with">.mp4.exe</Image>
+          <Image name="technique_id=T1036.007,technique_name=Double File Extension" condition="end with">.avi.exe</Image>
+          <Image name="technique_id=T1036.007,technique_name=Double File Extension" condition="end with">.zip.exe</Image>
+          <Image name="technique_id=T1036.007,technique_name=Double File Extension" condition="end with">.rar.exe</Image>
+        </Rule>
+        
+
+        <Rule name="Type Bypass - System Process Wrong Location" groupRelation="and">
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="end with">svchost.exe</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="not begin with">C:\Windows\System32\</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="not begin with">C:\Windows\SysWOW64\</Image>
+        </Rule>
+        <Rule name="Type Bypass - System Process Wrong Location" groupRelation="and">
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="end with">lsass.exe</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is not">C:\Windows\System32\lsass.exe</Image>
+        </Rule>
+        <Rule name="Type Bypass - System Process Wrong Location" groupRelation="and">
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="end with">csrss.exe</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is not">C:\Windows\System32\csrss.exe</Image>
+        </Rule>
+        <Rule name="Type Bypass - System Process Wrong Location" groupRelation="and">
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="end with">winlogon.exe</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is not">C:\Windows\System32\winlogon.exe</Image>
+        </Rule>
+        
+
+        <Rule name="Type Bypass - Unicode Homograph" groupRelation="or">
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">ѕvchost</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">ехplorer</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">lѕass</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">сsrss</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">wіnlogon</Image>
+
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">роwershell</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">сmd</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">nоtepad</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">tаskmgr</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">rеgedit</Image>
+
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">ρowershell</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">εxplorer</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">νotepad</Image>
+        </Rule>
+        
+
+        <Rule name="Type Bypass - Unicode Control Characters" groupRelation="or">
+
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u200B</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u200C</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u200D</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u2060</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\uFEFF</Image>
+
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u00A0</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u2000</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u2001</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u2002</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u2003</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u2004</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u2005</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u2006</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u2007</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u2008</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u2009</Image>
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u200A</Image>
+
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u202E</Image>
+
+          <Image name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u202D</Image>
+        </Rule>
+        
+
+        <Rule name="Type Bypass - Unicode in CommandLine" groupRelation="or">
+
+          <CommandLine name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">роwershell</CommandLine>
+          <CommandLine name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">сmd</CommandLine>
+          <CommandLine name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">nеt</CommandLine>
+          <CommandLine name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">wmic</CommandLine>
+
+          <CommandLine name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u200B</CommandLine>
+          <CommandLine name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u200C</CommandLine>
+          <CommandLine name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u200D</CommandLine>
+          <CommandLine name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u2060</CommandLine>
+          <CommandLine name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\uFEFF</CommandLine>
+          <CommandLine name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u00A0</CommandLine>
+
+          <CommandLine name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u202E</CommandLine>
+          <CommandLine name="technique_id=T1036.008,technique_name=Masquerade File Type" condition="contains">\u202D</CommandLine>
+        </Rule>
+        
+
+        <Rule name="DLL Hijacking - Suspicious DLL Loading" groupRelation="or">
+
+          <CommandLine name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="contains all">rundll32.exe;version.dll</CommandLine>
+          <CommandLine name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="contains all">rundll32.exe;dwmapi.dll</CommandLine>
+          <CommandLine name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="contains all">rundll32.exe;uxtheme.dll</CommandLine>
+          <CommandLine name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="contains all">rundll32.exe;winmm.dll</CommandLine>
+          <CommandLine name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="contains all">rundll32.exe;wtsapi32.dll</CommandLine>
+
+          <CommandLine name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">rundll32.exe;\AppData\</CommandLine>
+          <CommandLine name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">rundll32.exe;\ProgramData\</CommandLine>
+          <CommandLine name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">rundll32.exe;\Temp\</CommandLine>
+          <CommandLine name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">rundll32.exe;\Public\</CommandLine>
+          <CommandLine name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">rundll32.exe;\Downloads\</CommandLine>
+        </Rule>
+        
+
+        <Rule name="DLL Hijacking - Process from Suspicious Location" groupRelation="and">
+          <Image name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains any">\AppData\;\ProgramData\;\Temp\;\Public\;\Downloads\</Image>
+          <ParentImage name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains any">explorer.exe;winrar.exe;7z.exe;chrome.exe;firefox.exe</ParentImage>
+        </Rule>
+        
+
+        <Rule name="DLL Hijacking - Phantom DLL" groupRelation="or">
+
+          <Image name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="end with">\svchost.exe</Image>
+          <Image name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="not begin with">C:\Windows\System32\</Image>
+          <Image name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="not begin with">C:\Windows\SysWOW64\</Image>
+        </Rule>
+        
+
+        <Rule name="Type Bypass - Suspicious Parent" groupRelation="and">
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="end with">svchost.exe</Image>
+          <ParentImage name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is not">C:\Windows\System32\services.exe</ParentImage>
+          <ParentImage name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is not">C:\Windows\System32\MsMpEng.exe</ParentImage>
+          <ParentImage name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="not end with">svchost.exe</ParentImage>
+        </Rule>
+        
+ 
+        <Rule name="Type Bypass - Popular Apps Wrong Location" groupRelation="and">
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="end with">chrome.exe</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="not begin with">C:\Program Files\Google\Chrome\Application\</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="not begin with">C:\Program Files (x86)\Google\Chrome\Application\</Image>
+        </Rule>
+        <Rule name="Type Bypass - Popular Apps Wrong Location" groupRelation="and">
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="end with">firefox.exe</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="not begin with">C:\Program Files\Mozilla Firefox\</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="not begin with">C:\Program Files (x86)\Mozilla Firefox\</Image>
+        </Rule>
+        <Rule name="Type Bypass - Popular Apps Wrong Location" groupRelation="and">
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="end with">notepad.exe</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is not">C:\Windows\System32\notepad.exe</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is not">C:\Windows\SysWOW64\notepad.exe</Image>
+        </Rule>
+        <Rule name="Type Bypass - Popular Apps Wrong Location" groupRelation="and">
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="end with">taskmgr.exe</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is not">C:\Windows\System32\taskmgr.exe</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="is not">C:\Windows\SysWOW64\taskmgr.exe</Image>
+        </Rule>
+        
+
+        <Rule name="Type Bypass - Fake svchost with suspicious args" groupRelation="and">
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="end with">svchost.exe</Image>
+          <CommandLine name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="excludes">-k</CommandLine>
+        </Rule>
+        <Rule name="Type Bypass - Fake explorer with args" groupRelation="and">
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="end with">explorer.exe</Image>
+          <CommandLine name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains any">-c;/c;-e;/e;-r;/r;-d;/d</CommandLine>
+        </Rule>
+        
+
+        <Rule name="Type Bypass - Spaces in Process Names" groupRelation="or">
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains">svchost .exe</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains">explorer .exe</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains">lsass .exe</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains">csrss .exe</Image>
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains">winlogon .exe</Image>
+        </Rule>
+
         <Image name="technique_id=T1036,technique_name=Masquerading" condition="begin with">C:\PerfLogs\</Image>
         <Image name="technique_id=T1036,technique_name=Masquerading" condition="begin with">C:\$Recycle.bin\</Image>
         <Image name="technique_id=T1036,technique_name=Masquerading" condition="begin with">C:\Intel\Logs\</Image>
@@ -909,6 +1560,32 @@
         <Rule name="Remote Copy via wsl" groupRelation="and">
           <CommandLine name="technique_id=T1202,technique_name=Remote File Copy" condition="contains all">wsl.exe;--exec bash</CommandLine>
           <CommandLine name="technique_id=T1202,technique_name=Remote File Copy" condition="contains all">/dev/tcp</CommandLine>
+        </Rule>
+
+        <Rule name="Type Command File Copy Bypass" groupRelation="and">
+          <Image name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="image">cmd.exe</Image>
+          <CommandLine name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains all">type;></CommandLine>
+        </Rule>
+        
+        <Rule name="Type Command Suspicious Redirection" groupRelation="and">
+          <CommandLine name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains">type "</CommandLine>
+          <CommandLine name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains"> > "</CommandLine>
+        </Rule>
+        
+        <Rule name="Type Command with Executable Extensions" groupRelation="and">
+          <CommandLine name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains">type</CommandLine>
+          <CommandLine name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains any">.exe">.bat">.cmd">.scr">.com">.pif"</CommandLine>
+        </Rule>
+        
+        <Rule name="Type Command from Suspicious Parent" groupRelation="and">
+          <ParentImage name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains any">winrar.exe;7z.exe;7zg.exe;7zfm.exe</ParentImage>
+          <CommandLine name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains all">type;></CommandLine>
+        </Rule>
+        
+        <Rule name="Type Command Copying System Files" groupRelation="and">
+          <CommandLine name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains">type</CommandLine>
+          <CommandLine name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains any">\Windows\System32\;\Windows\SysWOW64\;\Program Files\;\Program Files (x86)\</CommandLine>
+          <CommandLine name="technique_id=T1036.005,technique_name=Match Legitimate Name or Location" condition="contains"> > </CommandLine>
         </Rule>
       </ProcessCreate>
     </RuleGroup>
@@ -1105,6 +1782,17 @@
     <RuleGroup groupRelation="or">
       <FileCreateTime onmatch="include">
         <TargetFilename name="technique_id=T1099,technique_name=Timestomp" condition="end with">.exe</TargetFilename>
+        
+        <TargetFilename name="technique_id=T1070.006,technique_name=Timestomp - DLL Hijacking" condition="end with">.dll</TargetFilename>
+        <TargetFilename name="technique_id=T1070.006,technique_name=Timestomp - System DLL" condition="contains all">.dll;\Windows\System32\</TargetFilename>
+        <TargetFilename name="technique_id=T1070.006,technique_name=Timestomp - System DLL" condition="contains all">.dll;\Windows\SysWOW64\</TargetFilename>
+        
+        <TargetFilename name="technique_id=T1070.006,technique_name=Timestomp - DLL Hijacking" condition="end with">\version.dll</TargetFilename>
+        <TargetFilename name="technique_id=T1070.006,technique_name=Timestomp - DLL Hijacking" condition="end with">\dwmapi.dll</TargetFilename>
+        <TargetFilename name="technique_id=T1070.006,technique_name=Timestomp - DLL Hijacking" condition="end with">\amsi.dll</TargetFilename>
+        <TargetFilename name="technique_id=T1070.006,technique_name=Timestomp - DLL Hijacking" condition="end with">\ntdll.dll</TargetFilename>
+        <TargetFilename name="technique_id=T1070.006,technique_name=Timestomp - DLL Hijacking" condition="end with">\kernel32.dll</TargetFilename>
+        
         <Image name="technique_id=T1070.006,technique_name=Timestomp" condition="begin with">C:\Temp</Image>
         <Image name="technique_id=T1070.006,technique_name=Timestomp" condition="begin with">C:\Windows\Temp</Image>
         <Image name="technique_id=T1070.006,technique_name=Timestomp" condition="begin with">C:\Tmp</Image>
@@ -1140,6 +1828,20 @@
         <Image name="technique_id=T1021,technique_name=Remote Services" condition="image">omniinet.exe</Image>
         <Image name="technique_id=T1021,technique_name=Remote Services" condition="image">hpsmhd.exe</Image>
         <Image name="technique_id=T1102,technique_name=Web Service" condition="begin with">C:\Program Files\Microsoft\HybridConnectionManager</Image>
+        
+
+        <Image name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="begin with">C:\Users\Public\</Image>
+        <Image name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="begin with">C:\ProgramData\</Image>
+        <Image name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="contains">\AppData\Local\Temp\</Image>
+        <Image name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="contains">\AppData\Roaming\</Image>
+        <Image name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="contains">\Downloads\</Image>
+        <Image name="technique_id=T1574.001,technique_name=DLL Search Order Hijacking" condition="contains">\Documents\</Image>
+        
+        <Image name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">explorer.exe;\AppData\</Image>
+        <Image name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">winrar.exe;\AppData\</Image>
+        <Image name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">notepad.exe;\AppData\</Image>
+        <Image name="technique_id=T1574.002,technique_name=DLL Side-Loading" condition="contains all">calc.exe;\AppData\</Image>
+        
         <Rule name="Unusual Connection" groupRelation="or">
           <Image condition="image">dllhost.exe</Image>
           <Image condition="image">hh.exe</Image>
@@ -1340,6 +2042,101 @@
         <Image condition="begin with">C:\Users</Image>
         <Image condition="begin with">C:\Temp</Image>
         <Image condition="begin with">C:\Windows\Temp</Image>
+      </ProcessTerminate>
+    </RuleGroup>
+    
+    <RuleGroup groupRelation="or">
+
+      <ProcessTerminate onmatch="include">
+        <Image condition="excludes">.</Image>
+        <Image condition="not end with">\</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="excludes">.</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="end with">\\svchost</Image>
+        <Image condition="end with">\\explorer</Image>
+        <Image condition="end with">\\winlogon</Image>
+        <Image condition="end with">\\lsass</Image>
+        <Image condition="end with">\\csrss</Image>
+        <Image condition="end with">\\chrome</Image>
+        <Image condition="end with">\\firefox</Image>
+        <Image condition="end with">\\notepad</Image>
+        <Image condition="end with">\\calc</Image>
+        <Image condition="end with">\\cmd</Image>
+        <Image condition="end with">\\powershell</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="begin with">C:\\ProgramData\\</Image>
+        <Image condition="excludes">.</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="begin with">C:\\Users\\Public\\</Image>
+        <Image condition="excludes">.</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="begin with">C:\\Windows\\Temp\\</Image>
+        <Image condition="excludes">.</Image>
+      </ProcessTerminate>
+      
+
+      <ProcessTerminate onmatch="include">
+        <Image condition="contains">\u00A0</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="contains">\u200B</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="contains">\u200C</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="contains">\u200D</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="contains">\u2060</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="contains">\uFEFF</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="contains">\u202E</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="contains">\u202D</Image>
+      </ProcessTerminate>
+      
+
+      <ProcessTerminate onmatch="include">
+        <Image condition="contains">ѕvchost</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="contains">ехplorer</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="contains">lѕass</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="contains">сsrss</Image>
+      </ProcessTerminate>
+      
+      <ProcessTerminate onmatch="include">
+        <Image condition="contains">wіnlogon</Image>
       </ProcessTerminate>
     </RuleGroup>
 
@@ -2009,6 +2806,34 @@
         <TargetObject name="technique_id=T1548.002,technique_name=Bypass User Access Control" condition="contains">Classes\exefile\shell\runas\command\isolatedCommand</TargetObject>
         <TargetObject name="technique_id=T1546.015,technique_name=Component Object Model Hijacking" condition="contains all">Software\Classes\CLSID;inprocserver32</TargetObject>
         <TargetObject name="technique_id=T1546.015,technique_name=Component Object Model Hijacking" condition="contains all">Software\Classes\CLSID;localserver32</TargetObject>
+        
+        <TargetObject name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">\software\microsoft\windows nt\currentversion\windows\appinit_dlls</TargetObject>
+        <TargetObject name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">\software\wow6432node\microsoft\windows nt\currentversion\windows\appinit_dlls</TargetObject>
+        <TargetObject name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">\software\microsoft\windows nt\currentversion\windows\loadappinit_dlls</TargetObject>
+        
+        <TargetObject name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">\software\microsoft\windows\currentversion\explorer\shellexecutehooks</TargetObject>
+        <TargetObject name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">\software\microsoft\internet explorer\urlsearchhooks</TargetObject>
+        <TargetObject name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">\software\wow6432node\microsoft\internet explorer\urlsearchhooks</TargetObject>
+        
+        <TargetObject name="technique_id=T1014,technique_name=Rootkit" condition="contains">\system\currentcontrolset\services\</TargetObject>
+        <TargetObject name="technique_id=T1014,technique_name=Rootkit" condition="contains all">\system\currentcontrolset\control\session manager\;knowndlls</TargetObject>
+        
+
+        <TargetObject name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">\system\currentcontrolset\services\sysmon</TargetObject>
+        <TargetObject name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">\system\currentcontrolset\services\sysmon64</TargetObject>
+        <TargetObject name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains all">\software\microsoft\windows\currentversion\winevt\channels\microsoft-windows-sysmon;enabled</TargetObject>
+        
+
+        <TargetObject name="technique_id=T1546.012,technique_name=Image File Execution Options Injection" condition="contains">\software\microsoft\windows nt\currentversion\image file execution options\</TargetObject>
+        <TargetObject name="technique_id=T1546.012,technique_name=Image File Execution Options Injection" condition="contains">\software\wow6432node\microsoft\windows nt\currentversion\image file execution options\</TargetObject>
+        
+
+        <TargetObject name="technique_id=T1547.005,technique_name=Security Support Provider" condition="contains">\system\currentcontrolset\control\lsa\security packages</TargetObject>
+        <TargetObject name="technique_id=T1547.005,technique_name=Security Support Provider" condition="contains">\system\currentcontrolset\control\lsa\oss packages</TargetObject>
+        
+        <TargetObject name="technique_id=T1546.003,technique_name=Windows Management Instrumentation Event Subscription" condition="contains">\software\classes\__eventfilter</TargetObject>
+        <TargetObject name="technique_id=T1546.003,technique_name=Windows Management Instrumentation Event Subscription" condition="contains">\software\classes\__eventconsumer</TargetObject>
+        <TargetObject name="technique_id=T1546.003,technique_name=Windows Management Instrumentation Event Subscription" condition="contains">\software\classes\__filtertoconsumerbinding</TargetObject>
         <TargetObject name="technique_id=T1546.015,technique_name=Component Object Model Hijacking" condition="contains all">Classes\CLSID\;TreatAs</TargetObject>
         <TargetObject name="technique_id=T1003.002,technique_name=Security Account Manager" condition="contains">System\CurrentControlSet\Services\VSS</TargetObject>
         <TargetObject name="technique_id=T1098,technique_name=Account Manipulation" condition="contains">\services\Netlogon\Parameters\DisablePasswordChange</TargetObject>
@@ -2790,12 +3615,11 @@
       </DnsQuery>
     </RuleGroup>
 
-    <!-- Event ID 24 == Clipboard change events, only captures text, not files - Includes -->
-    <!-- Default set to disabled due to privacy implications and potential data you leave for attackers, enable with care!-->
+   
     <RuleGroup groupRelation="or">
       <ClipboardChange onmatch="include" />
     </RuleGroup>
-    <!-- Event ID 25 == Process tampering events - Excludes -->
+
     <RuleGroup groupRelation="or">
       <ProcessTampering onmatch="exclude">
         <Image condition="is">C:\Program Files\Mozilla Firefox\firefox.exe</Image>
@@ -2824,18 +3648,15 @@
         <Image condition="is">C:\Windows\System32\wbem\WMIADAP.exe</Image>
       </ProcessTampering>
     </RuleGroup>
-    <!-- Event ID 26 == File Delete and overwrite events, does NOT save the file - Includes -->
-    <!-- Event ID 27 == File Block Executable and overwrite events - Includes -->
-    <!-- Default set to disabled due to potential unwanted blocks, enable with care!-->
+
     <RuleGroup groupRelation="or">
       <FileBlockExecutable onmatch="include" />
     </RuleGroup>
-    <!-- Event ID 28 == Fileblock Shredding events - Includes -->
-    <!-- Default set to disabled due to disk space implications, enable with care!-->
+
     <RuleGroup groupRelation="or">
       <FileBlockShredding onmatch="include" />
     </RuleGroup>
-    <!-- Event ID 29 == File Executable Detected events - Excludes -->
+
     <RuleGroup groupRelation="or">
       <FileExecutableDetected onmatch="exclude" />
     </RuleGroup>
@@ -2843,6 +3664,53 @@
       <CreateRemoteThread onmatch="include">
         <SourceImage name="technique_id=T1055,technique_name=Process Injection" condition="begin with">C:\</SourceImage>
         <SourceImage name="technique_id=T1055,technique_name=Process Injection" condition="begin with">\\</SourceImage>
+      </CreateRemoteThread>
+      
+
+      <CreateRemoteThread onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=AOB Substitution" condition="end with">HD-Player.exe</TargetImage>
+      </CreateRemoteThread>
+      
+      <CreateRemoteThread onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=AOB Substitution" condition="end with">HD-Player.exe</TargetImage>
+        <StartModule condition="contains">kernel32.dll</StartModule>
+      </CreateRemoteThread>
+      
+      <CreateRemoteThread onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=AOB Substitution" condition="end with">HD-Player.exe</TargetImage>
+        <StartModule condition="contains">ntdll.dll</StartModule>
+      </CreateRemoteThread>
+      
+
+      <CreateRemoteThread onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Cheat Injection" condition="end with">HD-Player.exe</TargetImage>
+        <SourceImage condition="contains">inject</SourceImage>
+      </CreateRemoteThread>
+      
+      <CreateRemoteThread onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Cheat Injection" condition="end with">HD-Player.exe</TargetImage>
+        <SourceImage condition="contains">cheat</SourceImage>
+      </CreateRemoteThread>
+      
+      <CreateRemoteThread onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Cheat Injection" condition="end with">HD-Player.exe</TargetImage>
+        <SourceImage condition="contains">hack</SourceImage>
+      </CreateRemoteThread>
+      
+
+      <CreateRemoteThread onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Suspicious Location Injection" condition="end with">HD-Player.exe</TargetImage>
+        <SourceImage condition="contains">\\Temp\\</SourceImage>
+      </CreateRemoteThread>
+      
+      <CreateRemoteThread onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Suspicious Location Injection" condition="end with">HD-Player.exe</TargetImage>
+        <SourceImage condition="contains">\\AppData\\</SourceImage>
+      </CreateRemoteThread>
+      
+      <CreateRemoteThread onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Unsigned Injector" condition="end with">HD-Player.exe</TargetImage>
+        <SourceImage condition="end with">.exe</SourceImage>
       </CreateRemoteThread>
     </RuleGroup>
     <RuleGroup groupRelation="or">
@@ -2959,6 +3827,98 @@
         <TargetFilename condition="begin with">C:\Windows\System32\spool\drivers\color</TargetFilename>
         <TargetFilename condition="begin with">C:\Windows\SysWOW64\Tasks</TargetFilename>
       </FileExecutableDetected>
+    </RuleGroup>
+
+    <!-- Advanced Kernel and Hardware Detection Rules by Keller -->
+    <RuleGroup name="HAL Table Monitoring" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1014,technique_name=Rootkit" condition="contains">HalDispatchTable</CallTrace>
+        <CallTrace name="technique_id=T1014,technique_name=Rootkit" condition="contains">KeServiceDescriptorTable</CallTrace>
+        <CallTrace name="technique_id=T1014,technique_name=Rootkit" condition="contains">KeServiceDescriptorTableShadow</CallTrace>
+        <CallTrace name="technique_id=T1014,technique_name=Rootkit" condition="contains">SSDT</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Hardware ID Tampering Detection" groupRelation="or">
+      <RegistryEvent onmatch="include">
+        <TargetObject name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor</TargetObject>
+        <TargetObject name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">\\HARDWARE\\DESCRIPTION\\System\\BIOS</TargetObject>
+        <TargetObject name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">\\SYSTEM\\CurrentControlSet\\Enum\\PCI</TargetObject>
+        <TargetObject name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4d36e968-e325-11ce-bfc1-08002be10318}</TargetObject>
+        <TargetObject name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">\\SYSTEM\\CurrentControlSet\\Control\\SystemInformation</TargetObject>
+        <TargetObject name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\NetworkCards</TargetObject>
+      </RegistryEvent>
+    </RuleGroup>
+
+    <RuleGroup name="Syscall Virtualization Detection" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">KiSystemCall64</CallTrace>
+        <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">KiFastSystemCall</CallTrace>
+        <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">KiSystemService</CallTrace>
+        <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">NtSystemCallGate</CallTrace>
+        <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">syscall</CallTrace>
+        <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">sysenter</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Stealth Memory Mapping Detection" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains all">NtMapViewOfSection;PAGE_EXECUTE_READWRITE</CallTrace>
+        <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains all">ZwMapViewOfSection;PAGE_EXECUTE_READWRITE</CallTrace>
+        <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">NtCreateSection</CallTrace>
+        <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">ZwCreateSection</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Device Serial Tampering Detection" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">NtDeviceIoControlFile</CallTrace>
+        <CallTrace name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">ZwDeviceIoControlFile</CallTrace>
+        <CallTrace name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">DeviceIoControl</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      <FileCreate onmatch="include">
+        <TargetFilename name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">\\Device\\</TargetFilename>
+        <TargetFilename name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">\\DosDevices\\</TargetFilename>
+      </FileCreate>
+    </RuleGroup>
+
+    <RuleGroup name="GPU Identifier Manipulation Detection" groupRelation="or">
+      <RegistryEvent onmatch="include">
+        <TargetObject name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">\\SYSTEM\\CurrentControlSet\\Control\\Video</TargetObject>
+        <TargetObject name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4d36e968-e325-11ce-bfc1-08002be10318}</TargetObject>
+        <TargetObject name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">\\SOFTWARE\\Microsoft\\DirectX</TargetObject>
+        <TargetObject name="technique_id=T1562.001,technique_name=Disable or Modify Tools" condition="contains">\\SOFTWARE\\Khronos\\OpenGL</TargetObject>
+      </RegistryEvent>
+    </RuleGroup>
+
+    <RuleGroup name="Kernel Driver Integrity Detection" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1014,technique_name=Rootkit" condition="contains">NtLoadDriver</CallTrace>
+        <CallTrace name="technique_id=T1014,technique_name=Rootkit" condition="contains">ZwLoadDriver</CallTrace>
+        <CallTrace name="technique_id=T1014,technique_name=Rootkit" condition="contains">NtUnloadDriver</CallTrace>
+        <CallTrace name="technique_id=T1014,technique_name=Rootkit" condition="contains">ZwUnloadDriver</CallTrace>
+        <CallTrace name="technique_id=T1014,technique_name=Rootkit" condition="contains">IoCreateDriver</CallTrace>
+        <CallTrace name="technique_id=T1014,technique_name=Rootkit" condition="contains">IoDeleteDriver</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      <FileCreate onmatch="include">
+        <TargetFilename name="technique_id=T1014,technique_name=Rootkit" condition="end with">.sys</TargetFilename>
+      </FileCreate>
+    </RuleGroup>
+
+    <RuleGroup name="Memory Remapping Detection" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">MmMapIoSpace</CallTrace>
+        <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">MmUnmapIoSpace</CallTrace>
+        <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">MmMapLockedPages</CallTrace>
+        <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">MmUnmapLockedPages</CallTrace>
+        <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">MmGetPhysicalAddress</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
     </RuleGroup>
 
   </EventFiltering>
