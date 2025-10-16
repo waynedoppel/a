@@ -582,9 +582,14 @@
         <Rule name="technique_id=T1003,technique_name=Credential Dumping (Likely)" groupRelation="and">
 
           <OriginalFileName condition="image">rpcping.exe</OriginalFileName>
-          <CommandLine condition="contains any">\s;-s</CommandLine>
-          <CommandLine condition="contains any">-u;\u;-t;\t</CommandLine>
-          <CommandLine condition="contains any">NTLM;ncacn_np</CommandLine>
+          <CommandLine condition="contains">\s</CommandLine>
+                <CommandLine condition="contains">-s</CommandLine>
+                <CommandLine condition="contains">-u</CommandLine>
+                <CommandLine condition="contains">\u</CommandLine>
+                <CommandLine condition="contains">-t</CommandLine>
+                <CommandLine condition="contains">\t</CommandLine>
+                <CommandLine condition="contains">NTLM</CommandLine>
+                <CommandLine condition="contains">ncacn_np</CommandLine>
         </Rule>
         <OriginalFileName name="technique_id=T1003,technique_name=Credential Dumping" condition="is">rpcping.exe</OriginalFileName>
 
@@ -610,15 +615,19 @@
         </Rule>
 
         <Rule name="Scheduled Task/Job" groupRelation="or">
-          <OriginalFileName name="technique_id=T1053.005,technique_name=Scheduled Task/Job" condition="contains any">schtasks.exe;sctasks.exe</OriginalFileName>
-          <OriginalFileName name="technique=T1053.002,technique_name=At" condition="contains any">at.exe;At.exe</OriginalFileName>
+          <OriginalFileName name="technique_id=T1053.005,technique_name=Scheduled Task/Job" condition="contains">schtasks.exe</OriginalFileName>
+                <OriginalFileName name="technique_id=T1053.005,technique_name=Scheduled Task/Job" condition="contains">sctasks.exe</OriginalFileName>
+                <OriginalFileName name="technique=T1053.002,technique_name=At" condition="contains">at.exe</OriginalFileName>
+                <OriginalFileName name="technique=T1053.002,technique_name=At" condition="contains">At.exe</OriginalFileName>
           <OriginalFileName name="technique_id=T1053,technique_name=Scheduled Task/Job" condition="is">taskeng.exe</OriginalFileName>
         </Rule>
 
         <Rule name="File Permissions Modification" groupRelation="or">
           <OriginalFileName name="technique_id=T1222.001,technique_name=File Permissions Modification" condition="is">takeown.exe</OriginalFileName>
           <Image name="technique_id=T1222.001,technique_name=File Permissions Modification" condition="image">forfiles.exe</Image>
-          <OriginalFileName name="technique_id=T1222.001,technique_name=File Permissions Modification" condition="contains any">icacls.exe;cacls.exe;xcacls.exe</OriginalFileName>
+          <OriginalFileName name="technique_id=T1222.001,technique_name=File Permissions Modification" condition="contains">icacls.exe</OriginalFileName>
+                <OriginalFileName name="technique_id=T1222.001,technique_name=File Permissions Modification" condition="contains">cacls.exe</OriginalFileName>
+                <OriginalFileName name="technique_id=T1222.001,technique_name=File Permissions Modification" condition="contains">xcacls.exe</OriginalFileName>
         </Rule>
 
         <Rule name="Access Token Manipulation" groupRelation="or">
@@ -638,7 +647,8 @@
         </Rule>
 
         <Rule name="technique_id=T1490,technique_name=Inhibit System Recovery" groupRelation="and">
-          <OriginalFileName condition="contains any">vssadmin.exe;wbadmin.exe</OriginalFileName>
+          <OriginalFileName condition="contains">vssadmin.exe</OriginalFileName>
+                <OriginalFileName condition="contains">wbadmin.exe</OriginalFileName>
           <CommandLine condition="contains">delete</CommandLine>
         </Rule>
         <Rule name="technique_id=T1490,technique_name=Inhibit System Recovery" groupRelation="and">
@@ -664,16 +674,23 @@
         <Rule name="Account Discovery" groupRelation="or">
           <OriginalFileName name="technique_id=T1087,technique_name=Account Discovery" condition="is">klist.exe</OriginalFileName>
           <OriginalFileName name="technique_id=T1087,technique_name=Account Discovery" condition="is">cmdkey.exe</OriginalFileName>
-          <CommandLine name="technique_id=T1087.001,technique_name=Local Account" condition="contains any">net localgroup;net user;net group</CommandLine>
-          <CommandLine name="technique_id=T1087.001,technique_name=Local Account" condition="contains any">dir C:\users;ls C:\users;dir C:\Users;ls C:\Users</CommandLine>
+          <CommandLine name="technique_id=T1087.001,technique_name=Local Account" condition="contains">net localgroup</CommandLine>
+                <CommandLine name="technique_id=T1087.001,technique_name=Local Account" condition="contains">net user</CommandLine>
+                <CommandLine name="technique_id=T1087.001,technique_name=Local Account" condition="contains">net group</CommandLine>
+                <CommandLine name="technique_id=T1087.001,technique_name=Local Account" condition="contains">dir C:\users</CommandLine>
+                <CommandLine name="technique_id=T1087.001,technique_name=Local Account" condition="contains">ls C:\users</CommandLine>
+                <CommandLine name="technique_id=T1087.001,technique_name=Local Account" condition="contains">dir C:\Users</CommandLine>
+                <CommandLine name="technique_id=T1087.001,technique_name=Local Account" condition="contains">ls C:\Users</CommandLine>
           <OriginalFileName name="technique_id=T1078.002,technique_name=Domain Accounts" condition="is">djoin.exe</OriginalFileName>
         </Rule>
 
         <Rule name="System Owner/User Discovery" groupRelation="or">
-          <OriginalFileName name="technique_id=T1033,technique_name=System Owner/User Discovery" condition="contains any">systeminfo.exe;sysinfo.exe</OriginalFileName>
+          <OriginalFileName name="technique_id=T1033,technique_name=System Owner/User Discovery" condition="contains">systeminfo.exe</OriginalFileName>
+          <OriginalFileName name="technique_id=T1033,technique_name=System Owner/User Discovery" condition="contains">sysinfo.exe</OriginalFileName>
           <OriginalFileName name="technique_id=T1033,technique_name=System Owner/User Discovery" condition="is">whoami.exe</OriginalFileName>
           <OriginalFileName name="technique_id=T1033,technique_name=System Owner/User Discovery" condition="is">quser.exe</OriginalFileName>
-          <OriginalFileName name="technique_id=T1033,technique_name=System Owner/User Discovery" condition="contains any">nltest.exe;nltestk.exe</OriginalFileName>
+          <OriginalFileName name="technique_id=T1033,technique_name=System Owner/User Discovery" condition="contains">nltest.exe</OriginalFileName>
+          <OriginalFileName name="technique_id=T1033,technique_name=System Owner/User Discovery" condition="contains">nltestk.exe</OriginalFileName>
         </Rule>
 
         <Rule name="System Network Configuration Discovery" groupRelation="or">
@@ -681,7 +698,8 @@
           <OriginalFileName name="technique_id=T1016,technique_name=System Network Configuration Discovery" condition="is">nslookup.exe</OriginalFileName>
           <OriginalFileName name="technique_id=T1016,technique_name=System Network Configuration Discovery" condition="is">tracert.exe</OriginalFileName>
           <OriginalFileName name="technique_id=T1016,technique_name=System Network Configuration Discovery" condition="is">route.exe</OriginalFileName>
-          <OriginalFileName name="technique_id=T1016,technique_name=System Network Configuration Discovery" condition="contains any">nbtstat.exe;nbtinfo.exe</OriginalFileName>
+          <OriginalFileName name="technique_id=T1016,technique_name=System Network Configuration Discovery" condition="contains">nbtstat.exe</OriginalFileName>
+          <OriginalFileName name="technique_id=T1016,technique_name=System Network Configuration Discovery" condition="contains">nbtinfo.exe</OriginalFileName>
         </Rule>
 
         <Rule name="Security Software Discovery" groupRelation="or">
@@ -690,10 +708,12 @@
         </Rule>
 
         <Rule name="Remote System Discovery" groupRelation="or">
-          <OriginalFileName name="technique_id=T1018,technique_name=Remote System Discovery" condition="contains any">net.exe;net1.exe</OriginalFileName>
-          <OriginalFileName name="technique_id=T1018,technique_name=Remote System Discovery" condition="contains any">ping.exe</OriginalFileName>
-          <OriginalFileName name="technique_id=T1018,technique_name=Remote System Discovery" condition="contains any">dsquery.exe</OriginalFileName>
-          <CommandLine name="technique_id=T1018,technique_name=Remote System Discovery" condition="contains any">net view;net group</CommandLine>
+          <OriginalFileName name="technique_id=T1018,technique_name=Remote System Discovery" condition="contains">net.exe</OriginalFileName>
+          <OriginalFileName name="technique_id=T1018,technique_name=Remote System Discovery" condition="contains">net1.exe</OriginalFileName>
+          <OriginalFileName name="technique_id=T1018,technique_name=Remote System Discovery" condition="contains">ping.exe</OriginalFileName>
+          <OriginalFileName name="technique_id=T1018,technique_name=Remote System Discovery" condition="contains">dsquery.exe</OriginalFileName>
+          <CommandLine name="technique_id=T1018,technique_name=Remote System Discovery" condition="contains">net view</CommandLine>
+          <CommandLine name="technique_id=T1018,technique_name=Remote System Discovery" condition="contains">net group</CommandLine>
         </Rule>
 
         <Rule name="Process Discovery" groupRelation="or">
@@ -705,8 +725,11 @@
         </Rule>
 
         <Rule name="File and Directory Discovery" groupRelation="or">
-          <OriginalFileName name="technique_id=T1083,technique_name=File and Directory Discovery" condition="contains any">tree.com;findstr.exe;where.exe</OriginalFileName>
-          <CommandLine name="technique_id=T1083,technique_name=File and Directory Discovery" condition="contains any">ls;dir</CommandLine>
+          <OriginalFileName name="technique_id=T1083,technique_name=File and Directory Discovery" condition="contains">tree.com</OriginalFileName>
+          <OriginalFileName name="technique_id=T1083,technique_name=File and Directory Discovery" condition="contains">findstr.exe</OriginalFileName>
+          <OriginalFileName name="technique_id=T1083,technique_name=File and Directory Discovery" condition="contains">where.exe</OriginalFileName>
+          <CommandLine name="technique_id=T1083,technique_name=File and Directory Discovery" condition="contains">ls</CommandLine>
+          <CommandLine name="technique_id=T1083,technique_name=File and Directory Discovery" condition="contains">dir</CommandLine>
         </Rule>
 
         <Rule name="System Network Connections Discovery" groupRelation="or">
@@ -727,7 +750,8 @@
 
         <Rule name="technique_id=T1070.001,technique_name=Clear Windows Event Logs" groupRelation="and">
           <OriginalFileName condition="is">wevtutil.exe</OriginalFileName>
-          <CommandLine condition="contains any">cl;clear-log</CommandLine>
+          <CommandLine condition="contains">cl</CommandLine>
+          <CommandLine condition="contains">clear-log</CommandLine>
         </Rule>
         <Rule name="Indicator Removal" groupRelation="or">
           <OriginalFileName name="Event Log Access" condition="is">wevtutil.exe</OriginalFileName>
@@ -736,12 +760,17 @@
 
         <Rule name="technique_id=T1112,technique_name=Modify Registry" groupRelation="and">
           <OriginalFileName condition="is any">reg.exe;regedit.exe</OriginalFileName>
-          <CommandLine condition="contains any">/i;.reg</CommandLine>
+          <CommandLine condition="contains">/i</CommandLine>
+          <CommandLine condition="contains">.reg</CommandLine>
         </Rule>
         <Rule name="technique_id=T1112,technique_name=Modify Registry" groupRelation="and">
           <OriginalFileName condition="is any">reg.exe;regedit.exe</OriginalFileName>
-          <CommandLine condition="contains any">hklm;HKLM;hkey_local_machine</CommandLine>
-          <CommandLine condition="contains any">\system;\sam;\security</CommandLine>
+          <CommandLine condition="contains">hklm</CommandLine>
+          <CommandLine condition="contains">HKLM</CommandLine>
+          <CommandLine condition="contains">hkey_local_machine</CommandLine>
+          <CommandLine condition="contains">\system</CommandLine>
+          <CommandLine condition="contains">\sam</CommandLine>
+          <CommandLine condition="contains">\security</CommandLine>
         </Rule>
 
         <Rule name="technique_id=T1202,technique_name=Indirect Command Execution" groupRelation="and">
@@ -2376,8 +2405,36 @@
       </CreateRemoteThread>
     </RuleGroup>
 
-    <RuleGroup groupRelation="or">
-      <RawAccessRead onmatch="include" />
+    <RuleGroup name="Direct Memory Access Detection" groupRelation="or">
+      <RawAccessRead onmatch="include">
+        <Device condition="contains any">\Device\HarddiskVolume</Device>
+      </RawAccessRead>
+      
+      <RawAccessRead onmatch="include">
+        <Image condition="not begin with">C:\Windows\</Image>
+        <Device condition="contains any">\Device\HarddiskVolume</Device>
+      </RawAccessRead>
+      
+      <RawAccessRead onmatch="include">
+        <Image condition="contains any">cheat;hack;inject;trainer;mod</Image>
+        <Device condition="contains any">\Device\HarddiskVolume</Device>
+      </RawAccessRead>
+      
+      <RawAccessRead onmatch="include">
+        <Image condition="contains any">\\Temp\\;\\AppData\\;\\Downloads\\;\\Desktop\\</Image>
+        <Device condition="contains any">\Device\HarddiskVolume</Device>
+      </RawAccessRead>
+      
+
+      <RawAccessRead onmatch="include">
+        <Image name="technique_id=T1006,technique_name=Direct Volume Access" condition="end with">HD-Player.exe</Image>
+        <Device condition="contains any">\Device\HarddiskVolume;\Device\Floppy;\Device\CdRom</Device>
+      </RawAccessRead>
+      
+      <RawAccessRead onmatch="include">
+        <Image name="technique_id=T1140,technique_name=Deobfuscate/Decode Files or Information" condition="end with">HD-Player.exe</Image>
+        <Device condition="contains any">\Device\PhysicalDrive</Device>
+      </RawAccessRead>
     </RuleGroup>
 
     <RuleGroup groupRelation="or">
@@ -3615,10 +3672,108 @@
       </DnsQuery>
     </RuleGroup>
 
-   
-    <RuleGroup groupRelation="or">
-      <ClipboardChange onmatch="include" />
+    <RuleGroup name="Enhanced DNS Query Monitoring" groupRelation="or">
+      <DnsQuery onmatch="include">
+        <Rule name="Suspicious Domain Patterns" groupRelation="or">
+          <QueryName condition="contains any">dga;malware;botnet;c2;command;control</QueryName>
+        </Rule>
+        <Rule name="Dynamic DNS Services" groupRelation="or">
+          <QueryName condition="end with">.duckdns.org</QueryName>
+          <QueryName condition="end with">.no-ip.org</QueryName>
+          <QueryName condition="end with">.ddns.net</QueryName>
+          <QueryName condition="end with">.hopto.org</QueryName>
+          <QueryName condition="end with">.zapto.org</QueryName>
+        </Rule>
+        <Rule name="Suspicious TLDs" groupRelation="or">
+          <QueryName condition="end with">.tk</QueryName>
+          <QueryName condition="end with">.ml</QueryName>
+          <QueryName condition="end with">.ga</QueryName>
+          <QueryName condition="end with">.cf</QueryName>
+          <QueryName condition="end with">.pw</QueryName>
+          <QueryName condition="end with">.top</QueryName>
+          <QueryName condition="end with">.click</QueryName>
+          <QueryName condition="end with">.download</QueryName>
+        </Rule>
+        <Rule name="Base64 Encoded Domains" groupRelation="or">
+          <QueryName condition="contains any">==;base64;encoded</QueryName>
+        </Rule>
+        <Rule name="Long Random Domains" groupRelation="or">
+          <QueryName condition="more than">50</QueryName>
+        </Rule>
+        <Rule name="Tunneling Indicators" groupRelation="or">
+          <QueryName condition="contains any">tunnel;dns2tcp;iodine;dnscat</QueryName>
+        </Rule>
+        <Rule name="Cryptocurrency Mining Pools" groupRelation="or">
+          <QueryName condition="contains any">pool;mining;crypto;xmr;btc;eth</QueryName>
+        </Rule>
+        <Rule name="Tor and Proxy Services" groupRelation="or">
+          <QueryName condition="contains any">tor;proxy;vpn;onion</QueryName>
+        </Rule>
+        <Rule name="Phishing Indicators" groupRelation="or">
+          <QueryName condition="contains any">secure-;verify-;update-;login-;account-</QueryName>
+        </Rule>
+        <Rule name="Suspicious Subdomains" groupRelation="or">
+          <QueryName condition="contains any">admin;panel;cpanel;webmail;ftp;mail;www2;dev;test;staging</QueryName>
+        </Rule>
+        <Rule name="IP Address Queries" groupRelation="or">
+          <QueryName condition="contains">.</QueryName>
+        </Rule>
+        <Rule name="Hexadecimal Domains" groupRelation="or">
+          <QueryName condition="contains">0</QueryName>
+                <QueryName condition="contains">1</QueryName>
+                <QueryName condition="contains">2</QueryName>
+                <QueryName condition="contains">3</QueryName>
+                <QueryName condition="contains">4</QueryName>
+                <QueryName condition="contains">5</QueryName>
+                <QueryName condition="contains">6</QueryName>
+                <QueryName condition="contains">7</QueryName>
+                <QueryName condition="contains">8</QueryName>
+                <QueryName condition="contains">9</QueryName>
+                <QueryName condition="contains">a</QueryName>
+                <QueryName condition="contains">b</QueryName>
+                <QueryName condition="contains">c</QueryName>
+                <QueryName condition="contains">d</QueryName>
+                <QueryName condition="contains">e</QueryName>
+                <QueryName condition="contains">f</QueryName>
+        </Rule>
+        <Rule name="Fast Flux Indicators" groupRelation="or">
+          <QueryName condition="contains any">fastflux;flux;rotating</QueryName>
+        </Rule>
+        <Rule name="Malware Family Indicators" groupRelation="or">
+          <QueryName condition="contains any">emotet;trickbot;qakbot;cobalt;beacon</QueryName>
+        </Rule>
+        <Rule name="Suspicious Process DNS Queries" groupRelation="and">
+          <Image condition="contains">powershell</Image>
+          <QueryName condition="excludes">.microsoft.com</QueryName>
+          <QueryName condition="excludes">.windows.com</QueryName>
+          <QueryName condition="excludes">.office.com</QueryName>
+        </Rule>
+        <Rule name="Suspicious Process DNS Queries - CMD" groupRelation="and">
+          <Image condition="contains">cmd</Image>
+          <QueryName condition="excludes">.microsoft.com</QueryName>
+          <QueryName condition="excludes">.windows.com</QueryName>
+          <QueryName condition="excludes">.office.com</QueryName>
+        </Rule>
+        <Rule name="Suspicious Process DNS Queries - Scripts" groupRelation="and">
+          <Image condition="contains">wscript</Image>
+          <QueryName condition="excludes">.microsoft.com</QueryName>
+          <QueryName condition="excludes">.windows.com</QueryName>
+          <QueryName condition="excludes">.office.com</QueryName>
+        </Rule>
+      </DnsQuery>
     </RuleGroup>
+
+     <RuleGroup name="Comprehensive DNS Query Logging" groupRelation="or">
+       <DnsQuery onmatch="include">
+         <Rule name="All DNS Queries with Enhanced Logging" groupRelation="or">
+           <QueryName condition="is not">localhost</QueryName>
+         </Rule>
+       </DnsQuery>
+     </RuleGroup>
+ 
+     <RuleGroup groupRelation="or">
+       <ClipboardChange onmatch="include" />
+     </RuleGroup>
 
     <RuleGroup groupRelation="or">
       <ProcessTampering onmatch="exclude">
@@ -3829,15 +3984,73 @@
       </FileExecutableDetected>
     </RuleGroup>
 
-    <!-- Advanced Kernel and Hardware Detection Rules by Keller -->
-    <RuleGroup name="HAL Table Monitoring" groupRelation="or">
+  
+    <RuleGroup name="Advanced Kernel Callback and SSDT Hook Detection" groupRelation="or">
       <ProcessAccess onmatch="include">
-        <CallTrace name="technique_id=T1014,technique_name=Rootkit" condition="contains">HalDispatchTable</CallTrace>
-        <CallTrace name="technique_id=T1014,technique_name=Rootkit" condition="contains">KeServiceDescriptorTable</CallTrace>
-        <CallTrace name="technique_id=T1014,technique_name=Rootkit" condition="contains">KeServiceDescriptorTableShadow</CallTrace>
-        <CallTrace name="technique_id=T1014,technique_name=Rootkit" condition="contains">SSDT</CallTrace>
-        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+        <Rule name="SSDT Hook Detection" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">SSDT;KeServiceDescriptorTable;KeServiceDescriptorTableShadow</CallTrace>
+        </Rule>
+        <Rule name="HAL Dispatch Table Manipulation" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">HalDispatchTable;HalPrivateDispatchTable</CallTrace>
+        </Rule>
+        <Rule name="Kernel Callback Registration" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">PsSetCreateProcessNotifyRoutine;PsSetCreateThreadNotifyRoutine;PsSetLoadImageNotifyRoutine</CallTrace>
+        </Rule>
+        <Rule name="Object Manager Callbacks" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">ObRegisterCallbacks;ObUnRegisterCallbacks;PsSetCreateProcessNotifyRoutineEx</CallTrace>
+        </Rule>
+        <Rule name="Registry Callback Hooks" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">CmRegisterCallback;CmUnRegisterCallback;CmRegisterCallbackEx</CallTrace>
+        </Rule>
+        <Rule name="File System Filter Callbacks" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">FltRegisterFilter;FltUnregisterFilter;IoRegisterFsRegistrationChange</CallTrace>
+        </Rule>
+        <Rule name="Power State Callbacks" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">PoRegisterPowerSettingCallback;PoUnregisterPowerSettingCallback</CallTrace>
+        </Rule>
+        <Rule name="Shutdown Notification Callbacks" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">IoRegisterShutdownNotification;IoUnregisterShutdownNotification</CallTrace>
+        </Rule>
+        <Rule name="Bug Check Callbacks" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">KeRegisterBugCheckCallback;KeDeregisterBugCheckCallback;KeRegisterBugCheckReasonCallback</CallTrace>
+        </Rule>
+        <Rule name="Driver Verifier Callbacks" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">MmAddVerifierThunks;MmRemoveVerifierThunks</CallTrace>
+        </Rule>
       </ProcessAccess>
+      <RegistryEvent onmatch="include">
+        <Rule name="Kernel Service Registration" groupRelation="or">
+          <TargetObject condition="contains any">\\SYSTEM\\CurrentControlSet\\Services\\;\\Parameters\\ServiceDll</TargetObject>
+          <Details condition="contains any">.sys;.dll</Details>
+        </Rule>
+        <Rule name="Driver Load Point Manipulation" groupRelation="or">
+          <TargetObject condition="contains">\\SYSTEM\\CurrentControlSet\\Control\\SafeBoot\\Minimal</TargetObject>
+        </Rule>
+      </RegistryEvent>
+      <FileCreate onmatch="include">
+        <Rule name="Kernel Driver Creation" groupRelation="or">
+          <TargetFilename condition="end with">.sys</TargetFilename>
+          <Image condition="contains any">rootkit;hook;bypass</Image>
+        </Rule>
+      </FileCreate>
+      <ProcessCreate onmatch="include">
+        <Rule name="Kernel Debugging Tools" groupRelation="or">
+          <CommandLine condition="contains any">kd.exe;windbg.exe;livekd.exe</CommandLine>
+        </Rule>
+        <Rule name="Driver Management Tools" groupRelation="or">
+          <CommandLine condition="contains any">sc.exe create;net start;driverquery</CommandLine>
+        </Rule>
+      </ProcessCreate>
     </RuleGroup>
 
     <RuleGroup name="Hardware ID Tampering Detection" groupRelation="or">
@@ -3910,6 +4123,43 @@
       </FileCreate>
     </RuleGroup>
 
+    <RuleGroup name="Manual DLL Mapping Detection" groupRelation="or">
+
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.001,technique_name=Manual DLL Mapping" condition="contains all">NtAllocateVirtualMemory;NtWriteVirtualMemory;NtProtectVirtualMemory</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.001,technique_name=Manual DLL Mapping" condition="contains all">ZwAllocateVirtualMemory;ZwWriteVirtualMemory;ZwProtectVirtualMemory</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.001,technique_name=Manual DLL Mapping" condition="contains all">NtCreateSection;NtMapViewOfSection;RtlImageDirectoryEntryToData</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+  
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.001,technique_name=Manual DLL Mapping" condition="contains all">LdrGetProcedureAddress;RtlImageDirectoryEntryToData;NtWriteVirtualMemory</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.001,technique_name=Reflective DLL Loading" condition="contains all">VirtualAlloc;WriteProcessMemory;CreateRemoteThread</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+ 
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.001,technique_name=Memory Module Loading" condition="contains all">NtAllocateVirtualMemory;RtlImageNtHeader;LdrResolveDelayLoadedAPI</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
     <RuleGroup name="Memory Remapping Detection" groupRelation="or">
       <ProcessAccess onmatch="include">
         <CallTrace name="technique_id=T1055.001,technique_name=API Hooking" condition="contains">MmMapIoSpace</CallTrace>
@@ -3921,6 +4171,761 @@
       </ProcessAccess>
     </RuleGroup>
 
-  </EventFiltering>
+    <RuleGroup name="Direct Syscall Detection" groupRelation="or">
 
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.012,technique_name=Direct System Calls" condition="is"></CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+
+
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.012,technique_name=Direct System Calls" condition="excludes">ntdll.dll</CallTrace>
+        <CallTrace condition="excludes">kernel32.dll</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+  
+      <CreateRemoteThread onmatch="include">
+        <StartAddress name="technique_id=T1055.012,technique_name=Direct System Calls" condition="not begin with">0x7</StartAddress>
+        <StartAddress condition="excludes">.dll</StartAddress>
+      </CreateRemoteThread>
+      
+
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.012,technique_name=Manual Syscall Implementation" condition="contains any">mov eax;syscall;sysenter</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+    
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.012,technique_name=Heaven's Gate" condition="contains any">wow64cpu.dll;wow64.dll</CallTrace>
+        <CallTrace condition="excludes">ntdll.dll</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Kernel-Mode Memory Access Detection" groupRelation="or">
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1014,technique_name=Kernel Driver Bypass" condition="end with">HD-Player.exe</TargetImage>
+        <SourceImage condition="end with">.sys</SourceImage>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1014,technique_name=Unsigned Driver Load" condition="contains any">NtLoadDriver;ZwLoadDriver;IoCreateDriver</CallTrace>
+        <SourceImage condition="not begin with">C:\Windows\System32\</SourceImage>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1014,technique_name=Kernel Object Manipulation" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">ObReferenceObjectByHandle;PsLookupProcessByProcessId;MmGetSystemRoutineAddress</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1014,technique_name=Physical Memory Access" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">MmMapIoSpace;MmGetPhysicalAddress;__readmsr;__writemsr</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Hardware Breakpoint Detection" groupRelation="or">
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Hardware Breakpoint Bypass" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">SetThreadContext;GetThreadContext;NtSetContextThread;NtGetContextThread</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Debug Register Manipulation" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">Dr0;Dr1;Dr2;Dr3;Dr6;Dr7</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Hardware Debug Bypass" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">DebugActiveProcess;DebugActiveProcessStop;WaitForDebugEvent</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Exception Handler Bypass" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">SetUnhandledExceptionFilter;AddVectoredExceptionHandler;RemoveVectoredExceptionHandler</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Memory-Mapped File Injection Detection" groupRelation="or">
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Memory Mapped File Injection" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains all">CreateFileMapping;MapViewOfFile</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Section Object Injection" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains all">NtCreateSection;NtMapViewOfSection;NtUnmapViewOfSection</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Transacted File Injection" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">CreateTransaction;CreateFileTransacted;CommitTransaction;RollbackTransaction</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Pagefile Section Injection" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">SEC_IMAGE;SEC_COMMIT;PAGE_EXECUTE_READWRITE</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Shared Memory Bypass Detection" groupRelation="or">
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Shared Memory Injection" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">OpenFileMapping;CreateFileMapping</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Named Pipe Injection" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">CreateNamedPipe;ConnectNamedPipe;WriteFile;ReadFile</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Process Doppelgänging Detection" groupRelation="or">
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1055.013,technique_name=Process Doppelgänging" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains all">NtCreateTransaction;NtCreateSection;NtRollbackTransaction</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Advanced Process Hollowing and Atom Bombing Detection" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <Rule name="Classic Process Hollowing" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">NtUnmapViewOfSection;NtAllocateVirtualMemory;NtWriteVirtualMemory</CallTrace>
+        </Rule>
+        <Rule name="Advanced Process Hollowing" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">NtCreateSection;NtMapViewOfSection;NtUnmapViewOfSection</CallTrace>
+        </Rule>
+        <Rule name="Process Doppelgänging" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">NtCreateTransaction;NtCreateSection;NtRollbackTransaction</CallTrace>
+        </Rule>
+        <Rule name="Process Herpaderping" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">CreateFile;WriteFile;CreateProcess;SetFileInformation</CallTrace>
+        </Rule>
+        <Rule name="Atom Bombing Detection" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">GlobalAddAtom;GlobalGetAtomName;SetWindowLong</CallTrace>
+        </Rule>
+        <Rule name="Advanced Atom Bombing" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">GlobalAddAtom;NtQueueApcThread;NtAlertResumeThread</CallTrace>
+        </Rule>
+        <Rule name="Ghost Writing" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">NtCreateSection;NtMapViewOfSection;NtWriteVirtualMemory;NtUnmapViewOfSection</CallTrace>
+        </Rule>
+      </ProcessAccess>
+      <ProcessCreate onmatch="include">
+        <Rule name="Suspended Process Creation" groupRelation="or">
+          <CommandLine condition="contains any">CREATE_SUSPENDED;PROCESS_CREATE_PROCESS</CommandLine>
+        </Rule>
+        <Rule name="Transacted Process Creation" groupRelation="or">
+          <CommandLine condition="contains any">NtCreateUserProcess;RtlCreateUserProcess</CommandLine>
+        </Rule>
+      </ProcessCreate>
+      <ImageLoad onmatch="include">
+        <Rule name="Hollowed Process Image Load" groupRelation="or">
+          <ImageLoaded condition="begin with">\\??\\</ImageLoaded>
+          <Signature condition="is">Unsigned</Signature>
+        </Rule>
+      </ImageLoad>
+    </RuleGroup>
+
+    <RuleGroup name="Callback Injection Detection" groupRelation="or">
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=Callback Injection" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">SetWindowsHookEx;SetWinEventHook;EnumWindows;EnumChildWindows</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1055.001,technique_name=APC Injection" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">QueueUserAPC;NtQueueApcThread;AlertResumeThread</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Advanced Evasion Detection" groupRelation="or">
+ 
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1562.006,technique_name=ETW Bypass" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">EtwEventWrite;EtwEventWriteTransfer;NtTraceEvent;EtwNotificationRegister</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1562.001,technique_name=AMSI Bypass" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">AmsiScanBuffer;AmsiScanString;AmsiInitialize;AmsiUninitialize</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1003.001,technique_name=LSASS Memory Dump" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">MiniDumpWriteDump;NtReadVirtualMemory;CreateToolhelp32Snapshot</CallTrace>
+        <SourceImage condition="is not">C:\Windows\System32\taskmgr.exe</SourceImage>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+  
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1562.002,technique_name=API Unhooking" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">VirtualProtect;WriteProcessMemory;FlushInstructionCache;LdrLoadDll</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Firmware Level Attack Detection" groupRelation="or">
+  
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1542.001,technique_name=UEFI Rootkit" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">NtSetSystemInformation;NtQuerySystemInformation;DeviceIoControl</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1542.001,technique_name=SMM Rootkit" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">__inbyte;__outbyte;__readmsr;__writemsr;IoPortRead;IoPortWrite</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="DMA Attack Detection" groupRelation="or">
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1006,technique_name=DMA Attack" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">HalAllocateCommonBuffer;MmAllocateContiguousMemory;IoAllocateMdl</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+    
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1006,technique_name=PCI Device Exploit" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">HalGetBusData;HalSetBusData;PciReadConfig;PciWriteConfig</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Speculative Execution Attack Detection" groupRelation="or">
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1211,technique_name=Speculative Execution" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">__cpuid;__rdtsc;__rdtscp;lfence;mfence;sfence</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1211,technique_name=Cache Timing Attack" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">clflush;prefetch;QueryPerformanceCounter;GetTickCount64</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Virtualization Escape Detection" groupRelation="or">
+  
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1611,technique_name=VM Escape" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">vmcall;vmmcall;vmlaunch;vmresume;vmxon;vmxoff</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1611,technique_name=Hypervisor Exploit" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">HvCallFlushVirtualAddressSpace;HvCallFlushVirtualAddressList;HvCallSwitchVirtualAddressSpace</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+   
+      <ProcessAccess onmatch="include">
+        <TargetImage name="technique_id=T1611,technique_name=Container Escape" condition="end with">HD-Player.exe</TargetImage>
+        <CallTrace condition="contains any">NtCreateUserProcess;NtCreateProcess;CreateProcessAsUser;CreateProcessWithToken</CallTrace>
+        <SourceImage condition="contains any">docker;containerd;runc;podman</SourceImage>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="ROP/JOP Chain Detection" groupRelation="or">
+
+      <CreateRemoteThread onmatch="include">
+        <StartAddress name="technique_id=T1055.011,technique_name=ROP Chain Execution" condition="not begin with">0x7</StartAddress>
+        <StartModule condition="is"></StartModule>
+      </CreateRemoteThread>
+
+      <CreateRemoteThread onmatch="include">
+        <StartAddress name="technique_id=T1055.011,technique_name=JOP Chain Execution" condition="begin with">0x0</StartAddress>
+        <StartAddress condition="excludes">.dll</StartAddress>
+        <StartAddress condition="excludes">.exe</StartAddress>
+      </CreateRemoteThread>
+      
+
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.011,technique_name=ROP Gadget Preparation" condition="contains all">VirtualProtect;PAGE_EXECUTE_READ</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.002,technique_name=Shellcode Injection" condition="contains all">VirtualAlloc;WriteProcessMemory;CreateRemoteThread</CallTrace>
+        <SourceImage condition="not begin with">C:\Windows\</SourceImage>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+  
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.011,technique_name=Advanced ROP Chain" condition="contains all">NtAllocateVirtualMemory;NtProtectVirtualMemory;NtCreateThreadEx</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+      
+
+      <ProcessAccess onmatch="include">
+        <CallTrace name="technique_id=T1055.011,technique_name=JOP Chain" condition="contains any">jmp;call</CallTrace>
+        <CallTrace condition="excludes">ntdll.dll</CallTrace>
+        <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Advanced Timing-Based Evasion Detection" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <Rule name="Basic Timing Evasion" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">Sleep;WaitForSingleObject;GetTickCount;QueryPerformanceCounter</CallTrace>
+        </Rule>
+        <Rule name="Advanced Sleep Techniques" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">NtDelayExecution;ZwDelayExecution;SleepEx;WaitForSingleObjectEx</CallTrace>
+        </Rule>
+        <Rule name="Anti-Debug Timing" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">IsDebuggerPresent;CheckRemoteDebuggerPresent;NtQueryInformationProcess</CallTrace>
+        </Rule>
+        <Rule name="Performance Counter Evasion" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">QueryPerformanceFrequency;GetSystemTimeAsFileTime;NtQuerySystemTime</CallTrace>
+        </Rule>
+        <Rule name="Thread Timing Manipulation" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">SuspendThread;Sleep;ResumeThread</CallTrace>
+        </Rule>
+        <Rule name="Conditional Timing Evasion" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">GetTickCount;Sleep;VirtualProtect</CallTrace>
+        </Rule>
+        <Rule name="Sandbox Timing Detection" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">GetSystemMetrics;Sleep;GetCursorPos</CallTrace>
+        </Rule>
+      </ProcessAccess>
+      <ProcessCreate onmatch="include">
+        <Rule name="Delayed Process Execution" groupRelation="or">
+          <CommandLine condition="contains any">timeout;ping -n;choice /t</CommandLine>
+        </Rule>
+      </ProcessCreate>
+      <FileCreate onmatch="include">
+        <Rule name="Timing-Based File Operations" groupRelation="or">
+          <TargetFilename condition="contains">\\AppData\\Local\\Temp\\</TargetFilename>
+          <Image condition="contains any">sleep;delay;wait</Image>
+        </Rule>
+      </FileCreate>
+    </RuleGroup>
+
+    <RuleGroup name="Advanced Hypervisor and Virtualization Attack Detection" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <Rule name="Hypervisor Instructions" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">cpuid;vmcall;vmmcall;vmxon;vmxoff;vmlaunch;vmresume</CallTrace>
+        </Rule>
+        <Rule name="HVCI Bypass Attempts" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">NtSetSystemInformation;NtQuerySystemInformation;ZwSetSystemInformation</CallTrace>
+        </Rule>
+        <Rule name="Hypervisor Rootkit Detection" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">cpuid;NtAllocateVirtualMemory;NtProtectVirtualMemory</CallTrace>
+        </Rule>
+        <Rule name="Blue Pill Attack Detection" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">vmxon;vmcs;vmlaunch</CallTrace>
+        </Rule>
+        <Rule name="SLAT Manipulation" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">invept;invvpid;vmfunc</CallTrace>
+        </Rule>
+      </ProcessAccess>
+      <RegistryEvent onmatch="include">
+        <Rule name="VM Detection Evasion" groupRelation="or">
+          <TargetObject condition="contains any">\\SYSTEM\\CurrentControlSet\\Services\\VBoxService;\\SYSTEM\\CurrentControlSet\\Services\\VMTools;\\SYSTEM\\CurrentControlSet\\Services\\vmmouse</TargetObject>
+        </Rule>
+        <Rule name="Hypervisor Feature Manipulation" groupRelation="or">
+          <TargetObject condition="contains any">\\SYSTEM\\CurrentControlSet\\Control\\DeviceGuard;\\SYSTEM\\CurrentControlSet\\Control\\CI\\Config</TargetObject>
+        </Rule>
+        <Rule name="HVCI Registry Tampering" groupRelation="or">
+          <TargetObject condition="contains">\\SYSTEM\\CurrentControlSet\\Control\\CI\\HVCIOptions</TargetObject>
+        </Rule>
+      </RegistryEvent>
+      <FileCreate onmatch="include">
+        <Rule name="Hypervisor Bypass Tools" groupRelation="or">
+          <TargetFilename condition="contains any">VBoxHook;VMwareHook;QemuHook;HyperHook</TargetFilename>
+        </Rule>
+        <Rule name="Virtualization Rootkit Files" groupRelation="or">
+          <TargetFilename condition="contains any">.vmx;.vbox;.qcow2;.vhd;.vmdk</TargetFilename>
+          <Image condition="contains any">hypervisor;rootkit;blue_pill</Image>
+        </Rule>
+      </FileCreate>
+      <ProcessCreate onmatch="include">
+        <Rule name="Hypervisor Management Tools" groupRelation="or">
+          <CommandLine condition="contains any">VBoxManage;vmrun;qemu-system;Hyper-V</CommandLine>
+        </Rule>
+        <Rule name="VM Escape Attempts" groupRelation="or">
+          <CommandLine condition="contains any">vmware-vmx;VirtualBox;qemu</CommandLine>
+          <ParentImage condition="contains any">vmware;virtualbox;qemu</ParentImage>
+        </Rule>
+      </ProcessCreate>
+    </RuleGroup>
+
+ 
+    <RuleGroup name="Zero-Day Behavioral Detection" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <Rule name="Memory Corruption Patterns" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">HeapAlloc;HeapReAlloc;HeapFree;RtlAllocateHeap;RtlReAllocateHeap;RtlFreeHeap</CallTrace>
+        </Rule>
+        <Rule name="Buffer Overflow Detection" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">strcpy;strcat;sprintf;gets;memcpy;memmove;RtlCopyMemory</CallTrace>
+        </Rule>
+        <Rule name="Heap Spray Detection" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">VirtualAlloc;VirtualAllocEx;HeapCreate;MapViewOfFile</CallTrace>
+        </Rule>
+        <Rule name="ROP Gadget Chains" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">pop;ret;jmp;call;leave;enter</CallTrace>
+        </Rule>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Exploit Mitigation Bypass Detection" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <Rule name="ASLR Bypass" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">GetModuleHandle;GetProcAddress;LoadLibrary;LdrLoadDll</CallTrace>
+        </Rule>
+        <Rule name="DEP Bypass" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">VirtualProtect;VirtualProtectEx;NtProtectVirtualMemory;SetProcessDEPPolicy</CallTrace>
+        </Rule>
+        <Rule name="CFG Bypass" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">SetProcessValidCallTargets;SetProcessDynamicEHContinuationTargets</CallTrace>
+        </Rule>
+        <Rule name="Stack Canary Bypass" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">__security_check_cookie;__report_gsfailure;__GSHandlerCheck</CallTrace>
+        </Rule>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Shellcode Detection" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <Rule name="Injected Code Detection" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">CreateRemoteThread;NtCreateThreadEx;RtlCreateUserThread;QueueUserAPC</CallTrace>
+        </Rule>
+        <Rule name="Executable Memory Allocation" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">PAGE_EXECUTE;PAGE_EXECUTE_READ;PAGE_EXECUTE_READWRITE;PAGE_EXECUTE_WRITECOPY</CallTrace>
+        </Rule>
+        <Rule name="Dynamic Code Generation" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">FlushInstructionCache;NtFlushInstructionCache;VirtualProtect</CallTrace>
+        </Rule>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Anomalous Process Behavior Detection" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <Rule name="Rapid Memory Operations" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">VirtualAlloc;VirtualFree;HeapAlloc;HeapFree</CallTrace>
+        </Rule>
+        <Rule name="Suspicious API Sequences" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">OpenProcess;ReadProcessMemory;WriteProcessMemory;CloseHandle</CallTrace>
+        </Rule>
+        <Rule name="Exception Handler Manipulation" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">SetUnhandledExceptionFilter;AddVectoredExceptionHandler;RtlAddVectoredExceptionHandler</CallTrace>
+        </Rule>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Advanced Multi-Stage Attack Correlation" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <Rule name="Reconnaissance Phase" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">GetSystemInfo;GetVersionEx;IsDebuggerPresent;CheckRemoteDebuggerPresent</CallTrace>
+        </Rule>
+        <Rule name="Environment Discovery" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">GetComputerName;GetUserName;GetCurrentDirectory;GetSystemDirectory</CallTrace>
+        </Rule>
+        <Rule name="Defense Evasion Preparation" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">IsDebuggerPresent;Sleep;VirtualProtect</CallTrace>
+        </Rule>
+        <Rule name="Privilege Escalation Chain" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">AdjustTokenPrivileges;LookupPrivilegeValue;OpenProcessToken;SetTokenInformation</CallTrace>
+        </Rule>
+        <Rule name="Persistence Establishment" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">RegCreateKey;RegSetValue;CreateService;SetWindowsHookEx</CallTrace>
+        </Rule>
+        <Rule name="Lateral Movement Preparation" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">NetUserEnum;NetShareEnum;WNetEnumResource;DsEnumerateDomainTrusts</CallTrace>
+        </Rule>
+        <Rule name="Credential Access Chain" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">OpenProcess;ReadProcessMemory;MiniDumpWriteDump</CallTrace>
+        </Rule>
+        <Rule name="Data Collection Phase" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">FindFirstFile;FindNextFile;GetFileAttributes;CryptEncrypt</CallTrace>
+        </Rule>
+        <Rule name="Command and Control Setup" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">InternetOpen;HttpOpenRequest;WinHttpConnect;WSAStartup</CallTrace>
+        </Rule>
+        <Rule name="Exfiltration Execution" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">CreateFile;ReadFile;InternetWriteFile</CallTrace>
+        </Rule>
+      </ProcessAccess>
+      <ProcessCreate onmatch="include">
+        <Rule name="Multi-Stage Process Chain" groupRelation="or">
+          <ParentCommandLine condition="contains any">powershell;cmd;wscript;cscript</ParentCommandLine>
+          <CommandLine condition="contains any">rundll32;regsvr32;mshta;certutil</CommandLine>
+        </Rule>
+        <Rule name="Living-off-the-Land Chain" groupRelation="or">
+          <ParentImage condition="end with">\\explorer.exe</ParentImage>
+          <CommandLine condition="contains any">powershell -enc;wmic process;schtasks /create</CommandLine>
+        </Rule>
+      </ProcessCreate>
+      <NetworkConnect onmatch="include">
+        <Rule name="C2 Communication Correlation" groupRelation="or">
+          <Image condition="contains any">powershell;rundll32;regsvr32;mshta</Image>
+          <DestinationPort condition="is any">80;443;8080;8443;53</DestinationPort>
+        </Rule>
+      </NetworkConnect>
+      <FileCreate onmatch="include">
+        <Rule name="Staged Payload Deployment" groupRelation="or">
+          <TargetFilename condition="contains">\\AppData\\Local\\Temp\\</TargetFilename>
+          <Image condition="contains any">powershell;rundll32;regsvr32</Image>
+        </Rule>
+      </FileCreate>
+    </RuleGroup>
+
+
+    <RuleGroup name="Thread Creation and Termination Detection" groupRelation="or">
+      <CreateRemoteThread onmatch="include">
+        <Rule name="Remote Thread Creation" groupRelation="or">
+          <StartAddress condition="contains any">kernel32.dll;ntdll.dll;user32.dll</StartAddress>
+        </Rule>
+        <Rule name="Suspicious Thread Start Address" groupRelation="or">
+          <StartAddress condition="excludes">.exe</StartAddress>
+        </Rule>
+        <Rule name="Thread Injection Detection" groupRelation="or">
+          <StartFunction condition="contains any">LoadLibrary;LdrLoadDll;NtCreateThreadEx;RtlCreateUserThread</StartFunction>
+        </Rule>
+      </CreateRemoteThread>
+    </RuleGroup>
+
+    <RuleGroup name="Process Creation and Child Process Detection" groupRelation="or">
+      <ProcessCreate onmatch="include">
+        <Rule name="Suspicious Process Spawning" groupRelation="or">
+          <CommandLine condition="contains any">cmd.exe;powershell.exe;rundll32.exe;regsvr32.exe</CommandLine>
+        </Rule>
+        <Rule name="Process Hollowing Detection" groupRelation="or">
+          <Image condition="contains any">.tmp</Image>
+          <CommandLine condition="contains any">CREATE_SUSPENDED;PROCESS_CREATE_PROCESS</CommandLine>
+        </Rule>
+      </ProcessCreate>
+    </RuleGroup>
+
+    <RuleGroup name="Window and GUI Injection Detection" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <Rule name="Window Creation Monitoring" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">CreateWindow;CreateWindowEx;ShowWindow;SetWindowPos</CallTrace>
+        </Rule>
+        <Rule name="Window Destruction Monitoring" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">DestroyWindow;CloseWindow</CallTrace>
+        </Rule>
+        <Rule name="GUI Thread Injection" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">AttachThreadInput;SetWindowsHookEx;CallNextHookEx</CallTrace>
+        </Rule>
+        <Rule name="Message Queue Manipulation" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">PostMessage;SendMessage;PeekMessage;GetMessage</CallTrace>
+        </Rule>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Thread Hijacking and Context Manipulation" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <Rule name="Thread Context Manipulation" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">SuspendThread;ResumeThread;GetThreadContext;SetThreadContext</CallTrace>
+        </Rule>
+        <Rule name="Thread Hijacking Detection" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">OpenThread;TerminateThread;ExitThread;NtTerminateThread</CallTrace>
+        </Rule>
+        <Rule name="APC Queue Manipulation" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">QueueUserAPC;NtQueueApcThread;AlertResumeThread;TestAlert</CallTrace>
+        </Rule>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Fileless Malware and Living-off-the-Land Detection" groupRelation="or">
+      <ProcessCreate onmatch="include">
+        <Rule name="PowerShell Fileless Execution" groupRelation="or">
+          <CommandLine condition="contains any">-EncodedCommand;-enc;-e;IEX;Invoke-Expression;DownloadString;DownloadData</CommandLine>
+          <CommandLine condition="contains all">powershell;-WindowStyle Hidden;-ExecutionPolicy Bypass</CommandLine>
+          <CommandLine condition="contains all">powershell;-NoProfile;-NonInteractive;-Command</CommandLine>
+        </Rule>
+        <Rule name="WMI Living-off-the-Land" groupRelation="or">
+          <CommandLine condition="contains any">wmic process call create;wmic /node;wmic computersystem;wmic useraccount</CommandLine>
+          <CommandLine condition="contains all">wmic;shadowcopy;delete</CommandLine>
+        </Rule>
+        <Rule name="WSCRIPT/CSCRIPT Fileless" groupRelation="or">
+          <CommandLine condition="contains any">wscript //b;cscript //b;wscript //nologo;cscript //nologo</CommandLine>
+          <CommandLine condition="contains all">wscript;http://;.vbs</CommandLine>
+          <CommandLine condition="contains all">cscript;http://;.js</CommandLine>
+        </Rule>
+        <Rule name="MSBuild Living-off-the-Land" groupRelation="or">
+          <CommandLine condition="contains any">msbuild.exe;MSBuild\\Current\\Bin</CommandLine>
+          <Image condition="end with">\\MSBuild.exe</Image>
+        </Rule>
+        <Rule name="RegSvr32 Fileless" groupRelation="or">
+          <CommandLine condition="contains any">regsvr32 /s /u /i:http;regsvr32 /s /n /u /i</CommandLine>
+          <CommandLine condition="contains all">regsvr32;scrobj.dll</CommandLine>
+        </Rule>
+      </ProcessCreate>
+      <ProcessAccess onmatch="include">
+        <Rule name="In-Memory Payload Injection" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">VirtualAllocEx;WriteProcessMemory;CreateRemoteThread</CallTrace>
+        </Rule>
+        <Rule name="Reflective Loading Detection" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains all">LoadLibrary;GetProcAddress;VirtualProtect</CallTrace>
+        </Rule>
+        <Rule name="Memory-Only Execution" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="excludes all">CreateFile;WriteFile;SetFilePointer</CallTrace>
+          <CallTrace condition="contains any">NtAllocateVirtualMemory;VirtualAlloc;HeapAlloc</CallTrace>
+        </Rule>
+      </ProcessAccess>
+      <ImageLoad onmatch="include">
+        <Rule name="Suspicious In-Memory Module Loading" groupRelation="or">
+          <ImageLoaded condition="begin with">\\Device\\</ImageLoaded>
+          <ImageLoaded condition="contains">\\AppData\\Local\\Temp\\</ImageLoaded>
+          <Signature condition="is">Unsigned</Signature>
+        </Rule>
+      </ImageLoad>
+      <NetworkConnect onmatch="include">
+        <Rule name="Fileless C2 Communication" groupRelation="or">
+          <Image condition="end with">\\powershell.exe</Image>
+          <Image condition="end with">\\wscript.exe</Image>
+          <Image condition="end with">\\cscript.exe</Image>
+          <Image condition="end with">\\mshta.exe</Image>
+          <Image condition="end with">\\regsvr32.exe</Image>
+        </Rule>
+      </NetworkConnect>
+    </RuleGroup>
+
+    <RuleGroup name="Stealth Detachment and Cleanup Detection" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <Rule name="Process Detachment" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">FreeLibrary;LdrUnloadDll;UnmapViewOfFile;VirtualFree</CallTrace>
+        </Rule>
+        <Rule name="Handle Cleanup Detection" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">CloseHandle;NtClose;DuplicateHandle;NtDuplicateObject</CallTrace>
+        </Rule>
+        <Rule name="Memory Cleanup" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">ZeroMemory;SecureZeroMemory;RtlSecureZeroMemory;memset</CallTrace>
+        </Rule>
+        <Rule name="Registry Cleanup" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">RegDeleteKey;RegDeleteValue;NtDeleteKey;NtDeleteValueKey</CallTrace>
+        </Rule>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <RuleGroup name="Parent-Child Process Correlation" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <Rule name="Cross-Process Communication" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">CreatePipe;ConnectNamedPipe;CreateMailslot;CreateEvent</CallTrace>
+        </Rule>
+        <Rule name="Shared Memory Communication" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">CreateFileMapping;OpenFileMapping;MapViewOfFile;UnmapViewOfFile</CallTrace>
+        </Rule>
+        <Rule name="Process Synchronization" groupRelation="or">
+          <GrantedAccess condition="is">0x1F0FFF</GrantedAccess>
+          <CallTrace condition="contains any">CreateMutex;CreateSemaphore;WaitForSingleObject;WaitForMultipleObjects</CallTrace>
+        </Rule>
+      </ProcessAccess>
+    </RuleGroup>
+
+  </EventFiltering>
 </Sysmon>
